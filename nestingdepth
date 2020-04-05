@@ -1,0 +1,52 @@
+/* nesting depth */
+
+#include <bits/stdc++.h>
+#define int long long
+#define Fast 
+using namespace std;
+signed main()
+{
+    Fast
+    int t; cin>>t;
+    int k=1;
+    while(t--)
+    {
+        string str; 
+		cin>>str;
+        int p=0,l=str[0]-'0',m;
+        string ans="";
+        if(l==0){ans+="0";}
+        else{
+            p=x;
+            while(l--){ans+="(";}
+            ans+=str[0];
+        }
+        for(int i=1;i<str.length();i++)
+        {
+            l=str[i]-'0';
+            m=str[i-1]-'0';
+            if(l>m)
+            {
+                int z=l-m;
+                p+=z;
+                while(z--) 
+				{ans+="(";}
+                ans+=str[i];
+            }
+            else if(l<m)
+            {
+                int z=m-l;
+                p=p-z;
+                while(z--) {ans+=")";}
+                ans+=str[i];
+            }
+            else{
+                ans+=str[i];
+            }
+        }
+        //cout<<p<<" P"<<endl;
+        while(p--){ans+=")";}
+        cout<<"Case #"<<k++<<": "<<ans<<endl;
+
+    }
+}

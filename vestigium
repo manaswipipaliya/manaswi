@@ -1,0 +1,52 @@
+/* vestigium */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+ int tst;
+ cin >> tst;
+ for (int y = 1; y <= tst; y++) {
+  int k = 0, r = 0, c = 0;
+  int N;
+  cin >> N;
+  vector<vector<int>> ar(N, vector<int>(N));
+   bool rowdone = false;
+  set<int> rows;  
+  for (int i = 0; i < N; i++) {
+   rows.clear();
+   rowdone = false;
+   for (int j = 0; j < N; j++) {
+    int val;
+    cin >> val;
+    ar[i][j] = val;
+    if (i == j) {
+     k += val;
+    }
+    if (!rowdone && rows.count(val) == 1) {
+     r++;
+     rowdone = true;
+    }
+    else {
+     rows.insert(val);
+    }
+   }
+  }
+
+  set<int> col; bool coldone = false;
+  for (int i = 0; i < N; i++) {
+   col.clear();
+   coldone = false;
+   for (int j = 0; j < N; j++) {
+    if (!coldone && col.count(ar[j][i]) == 1) {
+     c++;
+     coldone = true;
+    }
+    else
+     col.insert(ar[j][i]);
+   }
+  }
+  cout << "Case #" << y << ": " << k << " " << r << " " << c << "\n";
+ }
+ return 0;
+}
